@@ -6,15 +6,16 @@
 | ------------------- | ------------------------------ | ---------------------------------------------- |
 | FS module           | `require('node:fs')`           | Callback-based filesystem API                  |
 | FS with Promise     | `require('node:fs/promises')`  | Promise-based filesystem API                   |
-| Path module         | `require('node:path')`         | Handles file paths safely                      |
-| Read directory      | `fs.readdir(fileDir)`          | Reads all file names in a directory            |
 | Read file           | `fs.readFile(file, 'utf8')`    | Reads file contents                            |
+| Read directory      | `fs.readdir(fileDir)`          | Reads all file names in a directory            |
+| Path module         | `require('node:path')`         | Handles file paths safely                      |
 | Get file metadata   | `fs.stat(filePath)`            | Reads file information                         |
 | Build file path     | `path.join(fileDir, fileName)` | Creates a cross-platform file path             |
 | File size           | `stats.size`                   | Size of file in bytes                          |
 | File created date   | `stats.birthtime`              | `stats.birthtime.toISOString().split('T')[0]`  |
 | Async iteration     | `files.map(async () => {})`    | Processes multiple files asynchronously        |
 | Promise aggregation | `Promise.all(promises)`        | Waits for all async tasks (parallel execution) |
+| Promise             | pending, fullfilled, rejected  |                                                |
 | Error handling      | `try / catch`                  | Handles async/await errors                     |
 
 ```js
