@@ -2,21 +2,20 @@
 
 **Summary (final)**
 
-| Topic                | API / Code                                  | Key Notes                                       |
-| -------------------- | ------------------------------------------- | ----------------------------------------------- |
-| FS module            | `require('node:fs')`                        | Callback-based filesystem API                   |
-| FS with Promise      | `require('node:fs/promises')`               | Promise-based filesystem API                    |
-| Path module          | `require('node:path')`                      | Handles file paths safely                       |
-| -------------------- | ------------------------------------------- | ----------------------------------------------- |
-| Read directory       | `fs.readdir(fileDir)`                       | Reads all file names in a directory             |
-| Read file            | `fs.readFile(file, 'utf8')`                 | Reads file contents                             |
-| Get file metadata    | `fs.stat(filePath)`                         | Reads file information                          |
-| Build file path      | `path.join(fileDir, fileName)`              | Creates a cross-platform file path              |
-| File size            | `stats.size`                                | Size of file in bytes                           |
-| File created date    | `stats.birthtime`                           | `stats.birthtime.toISOString().split('T')[0]`   |
-| Async iteration      | `files.map(async () => {})`                 | Processes multiple files asynchronously         |
-| Promise aggregation  | `Promise.all(promises)`                     | Waits for all async tasks (parallel execution)  |
-| Error handling       | `try / catch`                               | Handles async/await errors                      |
+| Topic               | API / Code                     | Key Notes                                      |
+| ------------------- | ------------------------------ | ---------------------------------------------- |
+| FS module           | `require('node:fs')`           | Callback-based filesystem API                  |
+| FS with Promise     | `require('node:fs/promises')`  | Promise-based filesystem API                   |
+| Path module         | `require('node:path')`         | Handles file paths safely                      |
+| Read directory      | `fs.readdir(fileDir)`          | Reads all file names in a directory            |
+| Read file           | `fs.readFile(file, 'utf8')`    | Reads file contents                            |
+| Get file metadata   | `fs.stat(filePath)`            | Reads file information                         |
+| Build file path     | `path.join(fileDir, fileName)` | Creates a cross-platform file path             |
+| File size           | `stats.size`                   | Size of file in bytes                          |
+| File created date   | `stats.birthtime`              | `stats.birthtime.toISOString().split('T')[0]`  |
+| Async iteration     | `files.map(async () => {})`    | Processes multiple files asynchronously        |
+| Promise aggregation | `Promise.all(promises)`        | Waits for all async tasks (parallel execution) |
+| Error handling      | `try / catch`                  | Handles async/await errors                     |
 
 ```js
 const fs = require('fs').promises;
@@ -219,6 +218,19 @@ stats.birthtime.toISOString().split('T')[0]; //(YYYY-MM-DD)
 const data = await fs.readFile(filePath, 'utf8');
 await Promise.all(promises);
 ```
+
+- draft
+
+| Topic               | API / Code                     | Purpose                               | Key Notes                                     |
+| ------------------- | ------------------------------ | ------------------------------------- | --------------------------------------------- |
+| Read directory      | `fs.readdir(fileDir)`          | Reads all file names in a directory   | Returns an array of strings (file names only) |
+| Build file path     | `path.join(fileDir, fileName)` | Creates a safe file path              | Cross-platform (Windows / macOS / Linux)      |
+| Get file metadata   | `fs.stat(filePath)`            | Reads file information                | Returns a `Stats` object                      |
+| File size           | `stats.size`                   | Size of file in bytes                 | Available from `fs.stat()`                    |
+| File created date   | `stats.birthtime`              | File creation time                    | Use `toISOString()` for formatting            |
+| Async iteration     | `files.map(async () => {})`    | Process multiple files asynchronously | Returns an array of Promises                  |
+| Promise aggregation | `Promise.all(promises)`        | Waits for all async tasks             | Runs in parallel (faster than `for...await`)  |
+| Error handling      | `try / catch`                  | Handles async errors                  | Required for async/await                      |
 
 - draft -
 
